@@ -1,8 +1,4 @@
 ## Project: Search and Sample Return
-### Writeup Template: You can use this file as a template for your writeup if you want to submit it as a markdown file, but feel free to use some other method and submit a pdf if you prefer.
-
----
-
 
 **The goals / steps of this project are the following:**  
 
@@ -36,24 +32,23 @@
 #### 1. Run the functions provided in the notebook on test images (first with the test data provided, next on data you have recorded). Add/modify functions to allow for color selection of obstacles and rock samples.
 Here is an example of how to include an image in your writeup.
 
-1-Modification of perspect_transform function
-a-Add mask image for field of view of camera which is used next to get obstacle map
-2-Add find_rocks function to get rock location
+*1-Modification of perspect_transform function
+*a-Add mask image for field of view of camera which is used next to get obstacle map
+*2-Add find_rocks function to get rock location
 
-![alt text][image2]
 ### Autonomous Navigation and Mapping
 #### 1. Fill in the `perception_step()` (at the bottom of the `perception.py` script) and `decision_step()` (in `decision.py`) functions in the autonomous mapping scripts and an explanation is provided in the writeup of how and why these functions were modified as they were
 
 #### a.  obs_map=np.absolute(np.float32((threshed)-1))*mask
-Added to get obstacle map by getting non-navigable pixels and multiplying by mask to get obstacles in field of view of camera
+*Added to get obstacle map by getting non-navigable pixels and multiplying by mask to get obstacles in field of view of camera
 
 #### b.Update worldmap 
    #### data.worldmap[y_world, x_world, 2] =255
    #### data.worldmap[obs_y_world, obs_x_world, 0] =255
    #### nav_pix=data.worldmap[:,:,2]>0
    #### data.worldmap[nav_pix,0]=0
-Navigable pixels is populated in blue and obstacle pixels is populated in red 
-The last 2 lines added to prevent overlap between navigable and obstacle pixels  
+*Navigable pixels is populated in blue and obstacle pixels is populated in red 
+*The last 2 lines added to prevent overlap between navigable and obstacle pixels  
 
 #### 2. Launching in autonomous mode your rover can navigate and map autonomously.  Explain your results and how you might improve them in your writeup.  
 
@@ -64,4 +59,4 @@ The last 2 lines added to prevent overlap between navigable and obstacle pixels
 **Note:
 Resolution:1280*720
 Graphics quality:Good
-FPS:20
+FPS:20**
