@@ -47,8 +47,8 @@ Here is an example of how to include an image in your writeup.
    #### data.worldmap[obs_y_world, obs_x_world, 0] =255
    #### nav_pix=data.worldmap[:,:,2]>0
    #### data.worldmap[nav_pix,0]=0
-*Navigable pixels is populated in blue and obstacle pixels is populated in red.
-*The last 2 lines added to prevent overlap between navigable and obstacle pixels.  
+*Navigable pixels is populated in blue and obstacle pixels is populated in red.*
+*The last 2 lines added to prevent overlap between navigable and obstacle pixels.*  
 
 #### 2. Launching in autonomous mode your rover can navigate and map autonomously.  Explain your results and how you might improve them in your writeup.  
 
