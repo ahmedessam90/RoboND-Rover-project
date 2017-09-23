@@ -31,7 +31,7 @@
 ### 1-Notebook Analysis
 
    #### 1-Modification of perspect_transform function.  
-   ### a-Add mask image for field of view of camera which is used next to get obstacle map.  
+   #### a-Add mask image for field of view of camera which is used next to get obstacle map.  
    #### 2-Add find_rocks function to get rock location.  
 
 
