@@ -26,6 +26,7 @@ from supporting_functions import update_rover, create_output_images
 sio = socketio.Server()
 app = Flask(__name__)
 
+
 # Read in ground truth map and create 3-channel green version for overplotting
 # NOTE: images are read in by default with the origin (0, 0) in the upper left
 # and y-axis increasing downward.
@@ -42,6 +43,9 @@ class RoverState():
         self.total_time = None # To record total duration of naviagation
         self.img = None # Current camera image
         self.pos = None # Current position (x, y)
+        self.pos_old=(0,0) #to check if rover is stuck by comparing it with current position
+        self.stuck=0#flag to check if rover is stuck
+        self.count=0#to count number of images Rover is stucked
         self.yaw = None # Current yaw angle
         self.pitch = None # Current pitch angle
         self.roll = None # Current roll angle
@@ -59,7 +63,7 @@ class RoverState():
         # of navigable terrain pixels.  This is a very crude form of knowing
         # when you can keep going and when you should stop.  Feel free to
         # get creative in adding new fields or modifying these!
-        self.stop_forward = 50 # Threshold to initiate stopping
+        self.stop_forward = 300 # Threshold to initiate stopping
         self.go_forward = 500 # Threshold to go forward again
         self.max_vel = 2 # Maximum velocity (meters/second)
         # Image output from perception step
@@ -77,8 +81,10 @@ class RoverState():
         self.near_sample = 0 # Will be set to telemetry value data["near_sample"]
         self.picking_up = 0 # Will be set to telemetry value data["picking_up"]
         self.send_pickup = False # Set to True to trigger rock pickup
+
 # Initialize our rover 
 Rover = RoverState()
+
 
 # Variables to track frames per second (FPS)
 # Intitialize frame counter
@@ -104,6 +110,7 @@ def telemetry(sid, data):
     if data:
         global Rover
         # Initialize / update Rover with current telemetry
+        
         Rover, image = update_rover(Rover, data)
 
         if np.isfinite(Rover.vel):
@@ -210,3 +217,4 @@ if __name__ == '__main__':
 
     # deploy as an eventlet WSGI server
     eventlet.wsgi.server(eventlet.listen(('', 4567)), app)
+
