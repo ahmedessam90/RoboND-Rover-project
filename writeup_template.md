@@ -32,9 +32,9 @@
 #### 1. Run the functions provided in the notebook on test images (first with the test data provided, next on data you have recorded). Add/modify functions to allow for color selection of obstacles and rock samples.
 Here is an example of how to include an image in your writeup.
 
-*1-Modification of perspect_transform function.
-*a-Add mask image for field of view of camera which is used next to get obstacle map.
-*2-Add find_rocks function to get rock location.
+####1-Modification of perspect_transform function.
+#####a-Add mask image for field of view of camera which is used next to get obstacle map.
+####2-Add find_rocks function to get rock location.
 
 ### Autonomous Navigation and Mapping
 #### 1. Fill in the `perception_step()` (at the bottom of the `perception.py` script) and `decision_step()` (in `decision.py`) functions in the autonomous mapping scripts and an explanation is provided in the writeup of how and why these functions were modified as they were
