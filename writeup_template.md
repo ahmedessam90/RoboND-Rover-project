@@ -62,7 +62,7 @@
                         #Check if max distance is greater than 12 ,
                         #Steer to the right with minimum angle of 8 and maximum 10
                         if MAX_DIST > 12:  
-    ##### if the maximum angle and maximum distance are greater than certain thershold specified in the code,the rover steer angle is         positive so it steers to right.  
+     ##### if the maximum angle and maximum distance are greater than certain thershold specified in the code,the rover steer angle is         positive so it steers to right.  
                 # Check for Rover.mode status
                 if Rover.mode == 'forward': 
                     # Check the extent of navigable terrain
@@ -77,7 +77,7 @@
                         Rover.brake = 0
                         #Right wall is tracked because steer angle is alaways positive
                         Rover.steer = np.clip(np.mean(Rover.nav_angles * 180/np.pi), 10, 12) 
-    ##### if maximum angle and maximum distance are less than certain threshold specifed in the code, the rover steer angle is negative       so,it steers to left
+ ##### if maximum angle and maximum distance are less than certain threshold specifed in the code, the rover steer angle is negative       so,it steers to left
       
                         #Check if rover is near to wall
                           #Check Max_distance
