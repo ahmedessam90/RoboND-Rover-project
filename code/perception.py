@@ -150,6 +150,7 @@ def perception_step(Rover):
         # Rover.nav_angles = rover_centric_angles
     dist,angles = to_polar_coords(xpix,ypix)
     Rover.nav_angles=angles
+    Rover.nav_dists=dist
     
     #find rocks
     rock_map=find_rocks(warped,levels=(110,110,50))
