@@ -39,9 +39,9 @@
 
    #### a-Edits in perception.py  
       ##### 1-  obs_map=np.absolute(np.float32((threshed)-1))*mask
-      ##### Added to get obstacle map by getting non-navigable pixels and multiplying by mask to get obstacles in field of view of camera
+    ##### Added to get obstacle map by getting non-navigable pixels and multiplying by mask to get obstacles in field of view of camera
 
-   ### 2-Update worldmap  
+   ### b-Update worldmap  
       #### data.worldmap[y_world, x_world, 2] =255  
       #### data.worldmap[obs_y_world, obs_x_world, 0] =255  
       #### nav_pix=data.worldmap[:,:,2]>0  
@@ -78,6 +78,7 @@
                         #Right wall is tracked because steer angle is alaways positive
                         Rover.steer = np.clip(np.mean(Rover.nav_angles * 180/np.pi), 10, 12)
       ### if maximum angle and maximum distance are less than certain threshold specifed in the code, the rover steer angle is negative       so,it steers to left
+      
                         #Check if rover is near to wall
                           #Check Max_distance
                           #Steer the rover to left with maximum angle of 6 
@@ -93,10 +94,11 @@
                           Rover.brake = 0
                           Rover.steer = np.clip(np.mean(Rover.nav_angles * 180/np.pi), -10, -8)
                           Rover.throttle = 0
-      ### The rover can get stuck in some regions of the map so, The velocity of rover is checked to know whether it is moving or stuck 
-      ### A counter is used to count number of images the rover is stuck  
-      ### If the counter exceeds 100 so ,the rover is stuck 
-      ### To get out of being stucked, The rover throttle is zero and steer angle is -15  
+                  
+   ### The rover can get stuck in some regions of the map so, The velocity of rover is checked to know whether it is moving or stuck 
+   ### A counter is used to count number of images the rover is stuck  
+   ### If the counter exceeds 100 so ,the rover is stuck 
+   ### To get out of being stucked, The rover throttle is zero and steer angle is -15  
  
                      #Check if rover can not move for 100 images so ,it is stuck
                        if Rover.vel <0.01 :
