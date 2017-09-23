@@ -56,13 +56,13 @@
                           Max_angle=np.max(Rover.nav_angles)
                           Max_angle_points=np.argmax(Rover.nav_angles)
                           MAX_DIST=np.max(Rover.nav_dists[Max_angle_points]
-    ##### Maximum angle should still positive to get maximum distance at the right of the rover  
-    ##### Max_angle is used to ensure that maximum distance measured is at the right of the Rover
+ ##### Maximum angle should still positive to get maximum distance at the right of the rover  
+ ##### Max_angle is used to ensure that maximum distance measured is at the right of the Rover
                    if Max_angle > 0.8:
                         #Check if max distance is greater than 12 ,
                         #Steer to the right with minimum angle of 8 and maximum 10
                         if MAX_DIST > 12: 
-    ##### if the maximum angle and maximum distance are greater than certain thershold specified in the code,the rover steer angle is       ##### positive so it steers to right.  
+##### if the maximum angle and maximum distance are greater than certain thershold specified in the code,the rover steer angle is  positive so it steers to right.  
                 # Check for Rover.mode status
                 if Rover.mode == 'forward': 
                     # Check the extent of navigable terrain
