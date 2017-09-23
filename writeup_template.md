@@ -31,23 +31,45 @@
 ### 1-Notebook Analysis
 
    #### 1-Modification of perspect_transform function.  
-   #### a-Add mask image for field of view of camera which is used next to get obstacle map.  
+         def perspect_transform(img, src, dst):
+           
+         M = cv2.getPerspectiveTransform(src, dst)
+         warped = cv2.warpPerspective(img, M, (img.shape[1], img.shape[0]))# keep same size as input image
+         mask = cv2.warpPerspective(np.ones_like(img[:,:,0]), M, (img.shape[1], img.shape[0]))# keep same size as input image
+
+         return warped ,mask  
+         
+   #### a-Add mask image for field of view of camera which is used next to get obstacle map. 
+   
+               obs_map=np.absolute(np.float32((threshed)-1))*mask
+
    #### b-Add find_rocks function to get rock location.  
+         def find_rocks(img,levels=(110,110,50)):
+         rockpix=((img[:,:,0]>levels[0]) \
+            & (img[:,:,1]>levels[1]) \
+            & (img[:,:,2]<levels[2]))
+
+         color_select = np.zeros_like(img[:,:,0])
+         # Index the array of zeros with the boolean array and set to 1
+         color_select[rockpix] = 1
+         # Return the binary image
+         return color_select  
 
 
 ### 2-Autonomous Navigation and Mapping  
 
    #### a-Edits in perception.py  
-       1-  obs_map=np.absolute(np.float32((threshed)-1))*mask
-   ##### Added to get obstacle map by getting non-navigable pixels and multiplying by mask to get obstacles in field of view of camera
+     ##### 1- Added to get obstacle map by getting non-navigable pixels and multiplying by mask to get obstacles in field of view of camera
 
+         obs_map=np.absolute(np.float32((threshed)-1))*mask
+ 
    #### 2-Update worldmap  
-      #### data.worldmap[y_world, x_world, 2] =255  
-      #### data.worldmap[obs_y_world, obs_x_world, 0] =255  
-      #### nav_pix=data.worldmap[:,:,2]>0  
-      #### data.worldmap[nav_pix,0]=0  
-      #### Navigable pixels is populated in blue and obstacle pixels is populated in red.  
-      #### The last 2 lines added to prevent overlap between navigable and obstacle pixels.  
+         data.worldmap[y_world, x_world, 2] =255  
+          data.worldmap[obs_y_world, obs_x_world, 0] =255  
+          nav_pix=data.worldmap[:,:,2]>0  
+          data.worldmap[nav_pix,0]=0  
+          Navigable pixels is populated in blue and obstacle pixels is populated in red.  
+   ##### The last 2 lines added to prevent overlap between navigable and obstacle pixels.  
 
    #### b- Edits in decision.py   
    ##### The code makes the rover track the right wall.The Rover is checked near or far from wall using Max_angle & Max_distance      
