@@ -59,7 +59,7 @@
 ### 2-Autonomous Navigation and Mapping  
 
    #### a-Edits in perception.py  
-     ##### 1- Added to get obstacle map by getting non-navigable pixels and multiplying by mask to get obstacles in field of view of camera
+   ##### 1- Added to get obstacle map by getting non-navigable pixels and multiplying by mask to get obstacles in field of view of camera
 
          obs_map=np.absolute(np.float32((threshed)-1))*mask
  
