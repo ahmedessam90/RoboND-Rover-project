@@ -123,13 +123,11 @@
                                  Rover.stuck=0
                                  Rover.throttle = 0
 
-#### 2. Launching in autonomous mode your rover can navigate and map autonomously.  Explain your results and how you might improve them in your writeup.  
+### 2. Launching in autonomous mode your rover can navigate and map autonomously.  Explain your results and how you might improve them in your writeup.  
 
-#### a-The Rover maps 48% of the environment with fidelty 54%
-#### b-The Rover get stuck in wide palces"keep moving in circles"
-#### c-this can be improved by making the rover track the wall "The rover can track the wall by measuring the max distance of navigable pixels to get information about distance from wall"
+#### a-The Rover maps 99.5% of the environment with fidelty 56.8%  
 
-**Note:
-Resolution:1280*720
-Graphics quality:Good
-FPS:20**
+### Note:
+Resolution:1280*720  
+Graphics quality:Good  
+FPS:20  
